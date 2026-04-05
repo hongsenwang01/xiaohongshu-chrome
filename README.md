@@ -1,22 +1,52 @@
-# Spring Boot Web Application Example
+﻿# xiaohongshu-chrome
 
-This is a modern Java web application example built with Spring Boot 3.3.2, a powerful framework that simplifies the development of production-ready applications.
+这是一个基于 Spring Boot 3.3.2 的后端项目。
 
-## Project Description
+## 本地运行
 
-This project creates a lightweight, RESTful web service using Spring Boot. The application demonstrates Spring Boot's auto-configuration capabilities and embedded application server. The server listens on port 8080 and can be easily extended to create RESTful endpoints. Spring Boot's opinionated approach reduces boilerplate code and configuration, allowing developers to focus on business logic rather than infrastructure concerns.
+推荐环境：
+- JDK 17
+- MySQL
 
-## Environment
+项目已经自带 Maven Wrapper，所以不需要单独安装 Maven。
 
-This project runs on a Debian 12 system with Java 17 and Spring Boot 3.3.2, which is pre-configured in the Devbox environment. You don't need to worry about setting up Java, Maven, or Spring Boot dependencies yourself. The development environment includes all necessary tools for building and running Spring Boot applications. If you need to make adjustments to match your specific requirements, you can modify the configuration files accordingly.
+### 1. 本地私密配置
 
-## Project Execution
+真实密钥和数据库配置放在项目根目录的 `application-local.properties` 中。
+这个文件不会上传到 Git，并且会覆盖 `src/main/resources/application*.properties` 里的占位配置。
 
-**Development mode:** For normal development environment, simply enter Devbox and run `bash entrypoint.sh` in the terminal. This will compile and start the Spring Boot application using Maven's spring-boot:run command.
+### 2. 准备数据库
 
-**Production mode:** After release, the project will be automatically packaged into a Docker image and deployed according to the `entrypoint.sh` script with production parameters (run `bash entrypoint.sh production`). This will build a clean production JAR and run the application.
+按需执行以下脚本：
+- `src/main/resources/db/schema.sql`
 
+### 3. 启动项目
 
-DevBox: Code. Build. Deploy. We've Got the Rest.
+Windows：
 
-With DevBox, you can focus entirely on writing great code while we handle the infrastructure, scaling, and deployment. Seamless development from start to production. 
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+如果需要打包：
+
+```powershell
+.\mvnw.cmd clean package
+```
+
+### 4. 默认访问地址
+
+- `http://localhost:8080`
+
+## 当前保留的本地开发文件
+
+- `pom.xml`
+- `mvnw`
+- `mvnw.cmd`
+- `application-local.properties`
+- `src/main/resources/application*.properties`
+
+## 说明
+
+Docker 和外部部署相关文件已经移除。
+当前仓库以本地开发和本地运行为主。
