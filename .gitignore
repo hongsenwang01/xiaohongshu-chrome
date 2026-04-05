@@ -1,0 +1,31 @@
+# Maven / Java build output
+target/
+*.class
+
+# Logs and runtime files
+logs/
+*.log
+*.pid
+*.out
+*.err
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.*
+
+# Local certificates / keys
+src/main/resources/cert/*.p12
+src/main/resources/cert/*.pfx
+src/main/resources/cert/*.pem
