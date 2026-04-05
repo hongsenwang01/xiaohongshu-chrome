@@ -24,6 +24,8 @@ Thumbs.db
 # Local environment files
 .env
 .env.*
+application-local.properties
+config/application-local.properties
 
 # Local certificates / keys
 src/main/resources/cert/*.p12
