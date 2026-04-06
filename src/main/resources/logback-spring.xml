@@ -1,18 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!-- 定义日志文件的存储地址 -->
     <property name="LOG_HOME" value="./logs"/>
 
-    <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- 设置字符编码为 UTF-8 -->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <charset>UTF-8</charset>
+            <charset>${LOGGING_CONSOLE_CHARSET:-GBK}</charset>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 文件输出 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/application.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -27,13 +23,11 @@
         </rollingPolicy>
     </appender>
 
-    <!-- 日志级别 -->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
 
-    <!-- Spring Boot 日志级别 -->
     <logger name="org.springframework" level="INFO"/>
     <logger name="org.springframework.boot" level="INFO"/>
     <logger name="com.example.hello" level="DEBUG"/>
